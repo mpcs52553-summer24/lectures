@@ -25,7 +25,7 @@
 * Mosaic was the first "graphical" web browser, developed at the University of Illinois.
 * Historically, browsers can only interpret three languages: HTML, CSS, and JS.
 * HTTP has historically been the only network protocol for the web. 
-* HTTP 1.1, the most common implementation of HTTP today, is a completely plain-text protocol.  It's easy to write HTTP client and servers in any language.  A Python example of a very simple HTTP server can be studied in the file `server_1.py`.
+* HTTP 1.1, the most common implementation of HTTP today, is a completely plain-text protocol.  It's easy to write HTTP client and servers in any language.  A Python example of a very simple HTTP server can be studied in the file `hello_server.py`.
 * A newer approach to client-server web communucation, called "WebSockets", provides an interesting alternative. 
 * A fourth browser language, WebAssembly, is under development but is not yet fully implemented.
 
