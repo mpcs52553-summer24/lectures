@@ -1,5 +1,31 @@
 body {
   box-sizing: border-box;
   font-family: system-ui;
+  background-color: #CCC;
+  width: 960px;
+  margin: 12px auto;
+}
+
+div { 
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 2em; */
+}
+
+h1 { 
+  text-align: center;
+}
+h2 {
+  font-variant: small-caps;
+}
+img {
+  width: 100%; /* 100% of parent size */
+}
+article {
+  text-align: center;
+  flex-basis: 25%;
+  padding: 12px;
+  margin: 12px;
+  background-color: white;
 }
 
