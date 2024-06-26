@@ -4,6 +4,20 @@ const pickRandomNumber = function() {
 }
 
 // Your code goes here...
+document.addEventListener("DOMContentLoaded", prepareListeners)
+
+function prepareListeners() {
+  const link = document.querySelector("#rollLink")
+  link.addEventListener("click", rollTheDice)
+}
+
+function rollTheDice(event) {
+  event.preventDefault();
+  console.log("Rolling the dice...")
+  const images = document.querySelectorAll("#dice img")
+  images[0].src = "images/" + pickRandomNumber() + ".png"
+  images[1].src = "images/" + pickRandomNumber() + ".png"
+}
 
 
 
