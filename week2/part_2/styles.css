@@ -12,6 +12,32 @@ div {
   /* gap: 2em; */
 }
 
+/* Media Query */
+@media print {
+  article {
+    display: block;
+  }
+
+  #special {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+}
+@media (orientation: portrait) {
+  main { display: none; }
+  #instructions { display: block; }
+}
+@media (width <= 700px) {
+  div {
+    display: block;
+  }
+  img {
+    max-width: 50%;
+  }
+}
+
 h1 { 
   text-align: center;
 }

@@ -13,4 +13,17 @@ function addItem(e) {
   e.preventDefault();
   console.log(e);
 
+  const formElement = document.querySelector('form')
+  const inputElement = document.querySelector("#new_item")
+  const textToAdd = inputElement.value
+  
+  const newItem = document.createElement("li")
+  newItem.textContent = textToAdd
+  
+  const entireList = document.querySelector("#groceries")
+  entireList.appendChild(newItem)
+
+  // inputElement.value = ""
+  formElement.reset()
+
 }
