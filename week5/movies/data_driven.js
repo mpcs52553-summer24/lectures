@@ -7,8 +7,45 @@ data = [
   { title: "Toy Story", img: 'images/toy_story.jpg', desc: "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room." },
 ]
 
+class Movie {
+  constructor(title, img_source, description) {
+    this.title = title;
+    this.img_source = img_source
+    this.description = description
+  }
+
+  render() {
+    const container = document.querySelector("#app")
+
+    const movieContent = document.querySelector("#movie-template").content
+    const newMovie = movieContent.cloneNode(true)
+    newMovie.querySelector("h2").textContent = this.title
+    newMovie.querySelector("img").src = this.img_source
+    newMovie.querySelector("p").textContent = this.description
+
+    // newMovie.querySelector(".like").addEventListener("click", handleLikeCounter)
+
+    container.appendChild(newMovie)
+  }  
+}
 const renderMovies = function () {
-  // TO DO
+  for (movie of data) {
+    m = new Movie(movie.title, movie.img, movie.desc)
+    m.render()
+  }
+
+  // newMovie.querySelectorAll(".like").forEach(function(link) {
+  //   link.addEventListener("click", function(event) {
+  //     // ....
+  //   })
+  // })
+
+}
+
+function handleLikeCounter(event) {
+  event.preventDefault();
+  console.log(event)
+  // TO DO: increment the like counter
 }
 
 document.addEventListener("DOMContentLoaded", renderMovies)

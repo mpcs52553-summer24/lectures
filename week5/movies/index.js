@@ -16,11 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     counterElement.textContent = parseInt(counterElement.textContent) + 1
     event.currentTarget.style.color = "white"
     event.currentTarget.style.backgroundColor = "red"
+    let link = event.currentTarget
     setTimeout(function() {
-      document.querySelector(".like").style.color = "red"
-      document.querySelector(".like").style.backgroundColor = "white"
-      // event.currentTarget.style.color = "red"
-      // event.currentTarget.style.backgroundColor = "white"
+      eventlink.style.color = "red"
+      link.style.backgroundColor = "white"
     }, 1000)
   })
 })
