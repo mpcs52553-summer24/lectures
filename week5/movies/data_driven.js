@@ -34,7 +34,7 @@ const renderMovies = function () {
     m.render()
   }
 
-  // newMovie.querySelectorAll(".like").forEach(function(link) {
+  // newMovie.querySelectorAll(".like").forEach(function(z) {
   //   link.addEventListener("click", function(event) {
   //     // ....
   //   })

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favorite Movies</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script src="index.js" type="text/babel"></script>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+
+  <script type="text/babel">
+    const appElement = document.getElementById('app');
+    const appRoot = ReactDOM.createRoot(appElement);
+    appRoot.render(<h1>Greetings!</h1>);
+  </script>
+
+</body>
+
+</html>
+
+<!-- OLD CODE FROM WEEK 5
+
+<template id="movie-template">
+  <article>
+    <h2>TITLE GOES HERE</h2>
+
+    <img src="IMAGE FILENAME GOES HERE">
+    <p>
+      DESCRIPTION GOES HERE
+    </p>
+    <div class="actions">
+      <a class="like">&hearts; <span>0</span></a>
+    </div>
+  </article>
+</template>
+
+ -->
