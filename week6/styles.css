@@ -11,6 +11,7 @@ body {
 }
 
 .like {
+  /* font-size: 24px; */
   text-decoration: none;
   color: red;
   cursor: pointer;

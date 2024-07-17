@@ -31,11 +31,31 @@ function Movie(props) {
         {props.desc}
       </p>
       <div className="actions">
-        <a className="like">&hearts; <span>0</span></a>
+        <LikeButton></LikeButton>
       </div>
     </article>
   )
 }
+
+class LikeButton extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = { count: 0 }
+  }
+
+  handleClickEvent = (e) => {
+    e.preventDefault()
+    this.setState( { count: this.state.count + 1 } )
+  }
+
+  render() {
+    return (
+      <a onClick={this.handleClickEvent}  className="like">&hearts; <span>{this.state.count}</span></a>
+    )
+  }
+}
+
 
 
 
