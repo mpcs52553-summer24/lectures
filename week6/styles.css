@@ -22,6 +22,8 @@ div {
   flex-wrap: wrap;
 }
 
+.block { display: block; }
+h1 { text-align: center;}
 @media (max-width: 500px) {
   div {
     display: block;
