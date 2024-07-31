@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState } from 'react'
+import Movie from './Movie.js'
 
 function App() {
 
@@ -42,17 +42,26 @@ function App() {
     const newLikes = {...likes, ...obj }
     setLikes(newLikes)
   }
-  
+
   const movies = data.map(movie_data => {
     return <Movie key={movie_data.title} movieId={movie_data.id} onLiked={incrementLikes} likes={likes[movie_data.id] || 0} title={movie_data.title} release_date={movie_data.release_date} poster_path={movie_data.poster_path} vote_average={movie_data.vote_average} />
   })
 
+  function handleSearch(event) {
+    event.preventDefault();
+    const url = urlForSearch(searchTerm)
+    fetch(url).then((r) => r.json()).then((internet_data) => setData(internet_data.results))
+    setSearchTerm("")
+  }
 
+  const [searchTerm, setSearchTerm] = useState("")
+  
   return (
     <div>
       <header className="row mb-5 justify-content-between">
-        <form className="col-sm-4">
-          <input className="form-control" autoFocus name="searchTerm" type="text" placeholder="Search by title..." />
+        <form className="col-sm-4" onSubmit={handleSearch}>
+          <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}   
+              className="form-control" autoFocus name="searchTerm" type="text" placeholder="Search by title..." />
         </form>
 
         <p className="mt-2">
@@ -66,32 +75,6 @@ function App() {
         {movies}
       </div>
     </div>
-  )
-}
-
-function Movie(props) {
-  return (
-    <div className="col-sm-3 text-center mb-2 poster">
-      <img src={'http://image.tmdb.org/t/p/w185' + props.poster_path} className="img-fluid" alt={props.title} />
-
-      <p className="mt-2">
-        {props.release_date ? props.release_date.substr(0, 4) : null}
-        <span className="badge bg-primary mx-3">
-          {props.vote_average.toFixed(1)}
-        </span>
-        <LikeButton movieId={props.movieId} title={props.title} onClicked={props.onLiked} counter={props.likes} key={props.title} />
-      </p>
-    </div>
-  )
-}
-
-function LikeButton(props) {
-  function handleClick(event) {
-    event.preventDefault()
-    props.onClicked(props.movieId)
-  }
-  return (
-    <button onClick={handleClick} className="text-decoration-none btn text-danger ">&hearts; <span>{props.counter}</span></button>
   )
 }
 

@@ -5,15 +5,15 @@ export default function Item(props) {
 
   function increaseQty(event) {
     event.preventDefault()
-    setQty(qty + 1)
-    props.onItemChanged({ name: props.name, qty: qty, price: props.price });
+    setQty(qty + 1) 
+    props.onItemChanged({ name: props.name, qty: qty + 1, price: props.price });
   }
 
   function reduceQty(event) {
     event.preventDefault()
     if (qty > 1) {
       setQty(qty - 1)
-      props.onItemChanged({name: props.name, qty: qty, price: props.price }); 
+      props.onItemChanged({name: props.name, qty: qty - 1, price: props.price }); 
     }
   }
     
