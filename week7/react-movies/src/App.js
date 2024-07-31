@@ -10,7 +10,7 @@ function Movie(props) {
         <span className="badge bg-primary mx-3">
           {props.vote_average.toFixed(1)}
         </span>
-        <LikeButton/>
+        <LikeButton title={props.title} onClick={props.onLikeClicked} counter={props.likes}/>
       </p>
     </div>
   )
@@ -18,15 +18,13 @@ function Movie(props) {
 
 function LikeButton(props) {
 
-  const [counter, setCounter] = useState(0)
-
   function handleClick(event) {
     console.log(event)
-    setCounter(counter + 1)
+    props.onClick(props.title)
   }
 
   return (
-    <button onClick={handleClick} className="text-decoration-none btn text-danger ">&hearts; <span>{counter}</span></button>
+    <button onClick={handleClick} className="text-decoration-none btn text-danger ">&hearts; <span>{props.counter}</span></button>
   )
 }
 
@@ -44,8 +42,16 @@ function App() {
   ]
   
   const [data, setData] = useState(initialData)
-  
-  const movies = data.map(movie_data => <Movie title={movie_data.title} release_date={movie_data.release_date} poster_path={movie_data.poster_path} vote_average={movie_data.vote_average} />)
+  const [likes, setLikes] = useState( { }) // { "Apollo 13": 4, "SpiderMan": 2, "Apollo 13": 5 }
+
+  function incrementLikes(movie_title) { // Apollo 13
+    let obj = { }
+    const currentLikeCount = likes[movie_title] || 0
+    obj[movie_title] = currentLikeCount + 1
+    const newLikes = { ...likes, ...obj }
+    setLikes(newLikes)
+  }
+  const movies = data.map(movie_data => <Movie onLikeClicked={incrementLikes} likes={likes[movie_data.title] || 0} key={movie_data.title} title={movie_data.title} release_date={movie_data.release_date} poster_path={movie_data.poster_path} vote_average={movie_data.vote_average} />)
 
   function handleNowPlayingButton(event) {
     console.log(event)
@@ -60,6 +66,11 @@ function App() {
     const url = urlForMovies("top_rated")
     fetch(url).then(response => response.json()).then(api_data => setData(api_data.results)) 
   }
+  function handleOurMoviesButton(event) {
+    console.log(event)
+    event.preventDefault();
+    setData(initialData)
+  }
 
   return (
     <div>
@@ -72,6 +83,7 @@ function App() {
         <p className="mt-2">
           <button onClick={handleTopRatedButton} className="btn btn-primary" >Top-Rated Movies</button>
           <button onClick={handleNowPlayingButton} className="btn btn-primary ms-3">Now Playing</button>
+          <button onClick={handleOurMoviesButton} className="btn btn-secondary ms-3">Our Movies</button>
         </p>
       </header>
 
