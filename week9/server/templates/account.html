@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account</title>
+  <style>
+    body {
+      font-size: 22px;
+      margin: 2em;
+      font-family: system-ui;
+    }
+
+    input {
+      font-size: 22px;
+      padding: 6px;
+    }
+    header { display: flex; justify-content: space-between; }
+  </style>
+</head>
+
+<body>
+
+    <header>
+    <h1>Server-Side Form Example</h1>
+    <p>
+      {% if user is not none %}
+        Hello! <a href="/logout">Logout</a>
+      {% endif %}
+    </p>
+  </header>
+
+  <h1>My Account</h1>
+
+  <p>Your email address: {{ email }} </p>
+  <p>Your password: {{ password }} </p>
+  <p>Credit card on file: {{ cc }} </p>
+</body>
+
+</html>
